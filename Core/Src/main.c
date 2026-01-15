@@ -145,6 +145,8 @@ int main(void)
   HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
   //Alterações no CAN INIT
 
+  mpu6050Init();
+
   HAL_TIM_Base_Start(&htim2); //Timer do delay us
   HAL_TIM_Base_Start_IT(&htim3); //Timer do Scheduller
 

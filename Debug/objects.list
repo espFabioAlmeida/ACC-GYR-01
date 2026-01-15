@@ -8,6 +8,7 @@
 "./Core/Src/system_stm32f0xx.o"
 "./Core/Src/utilities/UtilityCAN.o"
 "./Core/Src/utilities/UtilityGPIO.o"
+"./Core/Src/utilities/UtilityMPU6050.o"
 "./Core/Startup/startup_stm32f072rbtx.o"
 "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.o"
 "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.o"
