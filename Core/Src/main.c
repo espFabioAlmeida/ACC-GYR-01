@@ -57,6 +57,7 @@ Mpu6050TypeDef mpu6050Data;
 
 uint8_t
 	flagPacoteCAN = false,
+	flagEnviaPacoteCAN = false,
 	flagLedCOM = false,
 
 	flagLeituraMpu6050 = false,
@@ -174,6 +175,13 @@ int main(void)
 		  flagLeituraMpu6050 = false;
 		  leituraMpu6050();
 	  }
+
+	  if(flagEnviaPacoteCAN) {
+		  flagEnviaPacoteCAN = false;
+		  enviaPacoteCAN();
+	  }
+
+	  recebePacoteCAN();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

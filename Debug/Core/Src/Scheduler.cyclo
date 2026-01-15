@@ -3,4 +3,4 @@
 ../Core/Src/Scheduler.c:24:6:tarefas10ms	1
 ../Core/Src/Scheduler.c:30:6:tarefas100ms	3
 ../Core/Src/Scheduler.c:50:6:tarefas1s	1
-../Core/Src/Scheduler.c:56:6:schedulerEngine	5
+../Core/Src/Scheduler.c:58:6:schedulerEngine	5

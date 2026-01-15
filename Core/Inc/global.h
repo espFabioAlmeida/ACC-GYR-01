@@ -44,6 +44,7 @@ extern Mpu6050TypeDef mpu6050Data;
 
 extern uint8_t
 	flagPacoteCAN,
+	flagEnviaPacoteCAN,
 	flagLedCOM,
 
 	flagLeituraMpu6050,
