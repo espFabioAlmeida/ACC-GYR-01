@@ -57,10 +57,10 @@ Mpu6050TypeDef mpu6050Data;
 
 uint8_t
 	flagPacoteCAN = false,
-
 	flagLedCOM = false,
 
-	flagLeituraMpu6050 = false;
+	flagLeituraMpu6050 = false,
+	flagEndereco1 = false;
 
 uint8_t
 	contaTempoLeituraMpu6050 = 0;
@@ -153,6 +153,13 @@ int main(void)
   //Alterações no CAN INIT
 
   mpu6050Init();
+
+  if(input(ADD0_GPIO_Port, ADD0_Pin)) {
+	  flagEndereco1 = false;
+  }
+  else {
+	  flagEndereco1 = true;
+  }
 
   HAL_TIM_Base_Start(&htim2); //Timer do delay us
   HAL_TIM_Base_Start_IT(&htim3); //Timer do Scheduller

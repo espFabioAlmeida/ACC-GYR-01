@@ -23,7 +23,7 @@ void recebePacoteCAN() {
 ENVIA PACOTE CAN
 ==============================================================================*/
 void enviaPacoteCAN() {
-	canTxHeader.ExtId = ACC_GYRO_ADDRESS;
+	canTxHeader.ExtId = ACC_GYRO_ADDRESS + flagEndereco1;
 	canTxHeader.RTR = CAN_RTR_DATA;
 	canTxHeader.IDE = CAN_ID_EXT;
 	canTxHeader.DLC = 8;

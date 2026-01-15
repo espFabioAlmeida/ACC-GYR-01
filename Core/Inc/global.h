@@ -36,10 +36,10 @@ extern Mpu6050TypeDef mpu6050Data;
 
 extern uint8_t
 	flagPacoteCAN,
-
 	flagLedCOM,
 
-	flagLeituraMpu6050;
+	flagLeituraMpu6050,
+	flagEndereco1;
 
 extern uint8_t
 	contaTempoLeituraMpu6050;
