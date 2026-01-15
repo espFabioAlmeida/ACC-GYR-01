@@ -1,0 +1,13 @@
+../Core/Src/Utils.c:12:10:incrementaDecrementa	6
+../Core/Src/Utils.c:37:12:indexOf	6
+../Core/Src/Utils.c:57:6:serializer	17
+../Core/Src/Utils.c:117:9:charToByte	18
+../Core/Src/Utils.c:143:9:charToBool	2
+../Core/Src/Utils.c:152:10:map	1
+../Core/Src/Utils.c:158:9:make8	5
+../Core/Src/Utils.c:186:10:make16	1
+../Core/Src/Utils.c:195:10:make32	1
+../Core/Src/Utils.c:213:9:bitRead	2
+../Core/Src/Utils.c:226:10:bitWrite	3
+../Core/Src/Utils.c:240:10:bitSet	1
+../Core/Src/Utils.c:246:10:bitReset	1

@@ -1,0 +1,7 @@
+../Core/Src/utilities/UtilityGPIO.c:12:9:debounce	16	static
+../Core/Src/utilities/UtilityGPIO.c:29:9:debounceInverso	16	static
+../Core/Src/utilities/UtilityGPIO.c:46:9:input	16	static
+../Core/Src/utilities/UtilityGPIO.c:55:6:on	16	static
+../Core/Src/utilities/UtilityGPIO.c:61:6:off	16	static
+../Core/Src/utilities/UtilityGPIO.c:67:6:toggle	16	static
+../Core/Src/utilities/UtilityGPIO.c:73:6:setPin	16	static
