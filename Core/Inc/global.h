@@ -24,6 +24,14 @@ typedef struct {
   int32_t gyroX;
   int32_t gyroY;
   int32_t gyroZ;
+
+  uint8_t accXNegativo;
+  uint8_t accYNegativo;
+  uint8_t accZNegativo;
+
+  uint8_t gyroXNegativo;
+  uint8_t gyroYNegativo;
+  uint8_t gyroZNegativo;
 } Mpu6050TypeDef;
 
 extern CAN_HandleTypeDef hcan;

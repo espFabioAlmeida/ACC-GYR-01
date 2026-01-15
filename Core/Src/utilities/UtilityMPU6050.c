@@ -129,6 +129,55 @@ void leituraMpu6050() {
 	else if(mpu6050Data.gyroZ < -255) {
 		mpu6050Data.gyroZ = -255;
 	}
+
+	//Transforma todos os valores em positivos e sinaliza nos flags
+	if(mpu6050Data.accX >= 0) {
+		mpu6050Data.accXNegativo = false;
+	}
+	else {
+		mpu6050Data.accX *= -1;
+		mpu6050Data.accXNegativo = true;
+	}
+
+	if(mpu6050Data.accY >= 0) {
+		mpu6050Data.accYNegativo = false;
+	}
+	else {
+		mpu6050Data.accY *= -1;
+		mpu6050Data.accYNegativo = true;
+	}
+
+	if(mpu6050Data.accZ >= 0) {
+		mpu6050Data.accZNegativo = false;
+	}
+	else {
+		mpu6050Data.accZ*= -1;
+		mpu6050Data.accZNegativo = true;
+	}
+
+	if(mpu6050Data.gyroX >= 0) {
+		mpu6050Data.gyroXNegativo = false;
+	}
+	else {
+		mpu6050Data.gyroX *= -1;
+		mpu6050Data.gyroXNegativo = true;
+	}
+
+	if(mpu6050Data.gyroY >= 0) {
+		mpu6050Data.gyroYNegativo = false;
+	}
+	else {
+		mpu6050Data.gyroY *= -1;
+		mpu6050Data.gyroYNegativo = true;
+	}
+
+	if(mpu6050Data.gyroZ >= 0) {
+		mpu6050Data.gyroZNegativo = false;
+	}
+	else {
+		mpu6050Data.gyroZ *= -1;
+		mpu6050Data.gyroZNegativo = true;
+	}
 }
 /*==============================================================================
 FIM DO ARQUIVO
