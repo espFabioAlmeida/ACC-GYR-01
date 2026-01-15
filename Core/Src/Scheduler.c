@@ -37,6 +37,12 @@ void tarefas100ms() {
 	else {
 		on(LED_COM_GPIO_Port, LED_COM_Pin);
 	}
+
+	contaTempoLeituraMpu6050 ++;
+	if(contaTempoLeituraMpu6050 >= TEMPO_LEITURA_MPU6050) {
+		contaTempoLeituraMpu6050 = 0;
+		flagLeituraMpu6050 = true;
+	}
 }
 /*==============================================================================
 TAREFAS 1s

@@ -15,6 +15,8 @@ enum BOOL {
 	true
 };
 
+#define TEMPO_LEITURA_MPU6050 5
+
 typedef struct {
   uint32_t accX;
   uint32_t accY;
@@ -35,7 +37,12 @@ extern Mpu6050TypeDef mpu6050Data;
 extern uint8_t
 	flagPacoteCAN,
 
-	flagLedCOM;
+	flagLedCOM,
+
+	flagLeituraMpu6050;
+
+extern uint8_t
+	contaTempoLeituraMpu6050;
 
 extern uint32_t
 	canTxMailbox;

@@ -58,7 +58,12 @@ Mpu6050TypeDef mpu6050Data;
 uint8_t
 	flagPacoteCAN = false,
 
-	flagLedCOM = false;
+	flagLedCOM = false,
+
+	flagLeituraMpu6050 = false;
+
+uint8_t
+	contaTempoLeituraMpu6050 = 0;
 
 uint32_t
 	canTxMailbox;
@@ -158,6 +163,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if(flagLeituraMpu6050) {
+		  flagLeituraMpu6050 = false;
+		  leituraMpu6050();
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
