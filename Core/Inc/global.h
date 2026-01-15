@@ -18,12 +18,12 @@ enum BOOL {
 #define TEMPO_LEITURA_MPU6050 5
 
 typedef struct {
-  uint32_t accX;
-  uint32_t accY;
-  uint32_t accZ;
-  uint32_t gyroX;
-  uint32_t gyroY;
-  uint32_t gyroZ;
+  int32_t accX;
+  int32_t accY;
+  int32_t accZ;
+  int32_t gyroX;
+  int32_t gyroY;
+  int32_t gyroZ;
 } Mpu6050TypeDef;
 
 extern CAN_HandleTypeDef hcan;

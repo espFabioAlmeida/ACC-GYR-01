@@ -60,7 +60,7 @@ LEITURA MPU6050
 ==============================================================================*/
 void leituraMpu6050() {
 	uint8_t pData;
-	uint8_t bufferRx[14];
+	uint16_t bufferRx[14];
 
 	pData = 0x3B; //endereço gyro
 	HAL_I2C_Master_Transmit(&hi2c1, ENDERECO_MPU, &pData, 1, 100); //Posiciona o endereço
@@ -68,13 +68,13 @@ void leituraMpu6050() {
 
 	HAL_I2C_Master_Receive(&hi2c1, ENDERECO_MPU, &bufferRx, 14, 100); //Busca todos os dados
 
-	mpu6050Data.accX = make16(bufferRx[0], bufferRx[1]);
-	mpu6050Data.accY = make16(bufferRx[2], bufferRx[3]);
-	mpu6050Data.accZ = make16(bufferRx[4], bufferRx[5]);
+	mpu6050Data.accX = bufferRx[0] << 8 | bufferRx[1];
+	mpu6050Data.accY = bufferRx[2] << 8 | bufferRx[3];
+	mpu6050Data.accZ = bufferRx[4] << 8 | bufferRx[5];
 	// dado 6 e 7 são a temperatura, ignorados
-	mpu6050Data.gyroX = make16(bufferRx[8], bufferRx[9]);
-	mpu6050Data.gyroY = make16(bufferRx[10], bufferRx[11]);
-	mpu6050Data.gyroZ = make16(bufferRx[12], bufferRx[13]);
+	mpu6050Data.gyroX = bufferRx[8] << 8 | bufferRx[9];
+	mpu6050Data.gyroY = bufferRx[10] << 8 | bufferRx[11];
+	mpu6050Data.gyroZ = bufferRx[12] << 8 | bufferRx[13];
 
 	mpu6050Data.accX *= 100; //desloca duas casas 1.53 = 153
 	mpu6050Data.accX /= ACC_DIVISAO_16G;
@@ -86,6 +86,49 @@ void leituraMpu6050() {
 	mpu6050Data.gyroX /= GYRO_DIVISAO_2000; //Dessa forma fica 10x menor
 	mpu6050Data.gyroY /= GYRO_DIVISAO_2000;
 	mpu6050Data.gyroZ /= GYRO_DIVISAO_2000;
+
+	//Não permite o valor ser maior que 255. ACC 2.55 e Gyro 2550
+	if(mpu6050Data.accX > 255) {
+		mpu6050Data.accX = 255;
+	}
+	else if(mpu6050Data.accX < -255) {
+		mpu6050Data.accX = -255;
+	}
+
+	if(mpu6050Data.accY > 255) {
+		mpu6050Data.accY = 255;
+	}
+	else if(mpu6050Data.accY < -255) {
+		mpu6050Data.accY = -255;
+	}
+
+	if(mpu6050Data.accZ > 255) {
+		mpu6050Data.accZ = 255;
+	}
+	else if(mpu6050Data.accZ < -255) {
+		mpu6050Data.accZ = -255;
+	}
+
+	if(mpu6050Data.gyroX > 255) {
+		mpu6050Data.gyroX = 255;
+	}
+	else if(mpu6050Data.gyroX < -255) {
+		mpu6050Data.gyroX = -255;
+	}
+
+	if(mpu6050Data.gyroY > 255) {
+		mpu6050Data.gyroY = 255;
+	}
+	else if(mpu6050Data.gyroY < -255) {
+		mpu6050Data.gyroY = -255;
+	}
+
+	if(mpu6050Data.gyroZ > 255) {
+		mpu6050Data.gyroZ = 255;
+	}
+	else if(mpu6050Data.gyroZ < -255) {
+		mpu6050Data.gyroZ = -255;
+	}
 }
 /*==============================================================================
 FIM DO ARQUIVO
