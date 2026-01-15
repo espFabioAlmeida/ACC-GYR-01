@@ -53,6 +53,8 @@ TIM_HandleTypeDef htim3;
 CAN_TxHeaderTypeDef	canTxHeader;
 CAN_RxHeaderTypeDef	canRxHeader;
 
+Mpu6050TypeDef mpu6050Data;
+
 uint8_t
 	flagPacoteCAN = false,
 

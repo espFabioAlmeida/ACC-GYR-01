@@ -15,11 +15,22 @@ enum BOOL {
 	true
 };
 
+typedef struct {
+  uint32_t accX;
+  uint32_t accY;
+  uint32_t accZ;
+  uint32_t gyroX;
+  uint32_t gyroY;
+  uint32_t gyroZ;
+} Mpu6050TypeDef;
+
 extern CAN_HandleTypeDef hcan;
 extern I2C_HandleTypeDef hi2c1;
 
 extern CAN_TxHeaderTypeDef	canTxHeader;
 extern CAN_RxHeaderTypeDef	canRxHeader;
+
+extern Mpu6050TypeDef mpu6050Data;
 
 extern uint8_t
 	flagPacoteCAN,

@@ -3,6 +3,10 @@
 //AUTOR:      Fábio Almeida
 //CRIADO:     15/01/2026
 //OBSERVAÇÕES:
+//SEQUENCIA DE DADOS NA MEMÓRIA:
+//ACCX_H ACCX_L ACCY_H ACCY_L ACCZ_H ACCZ_L
+//TEMP_H TEMP_L
+//GYROX_H GYROX_L GYROY_H GYROY_L GYROZ_H GYROZ_L
 ////////////////////////////////////////////////////////////////////////////////
 #include "main.h"
 #include "global.h"
@@ -50,6 +54,38 @@ void mpu6050Init() {
 	pData[1] = ACC_FUNDO_ESCALA_16G;
 	HAL_I2C_Master_Transmit(&hi2c1, ENDERECO_MPU, &pData, 2, 100); //configura o ACC
 	HAL_Delay(100);
+}
+/*==============================================================================
+LEITURA MPU6050
+==============================================================================*/
+void leituraMpu6050Init() {
+	uint8_t pData;
+	uint8_t bufferRx[14];
+
+	pData = 0x3B; //endereço gyro
+	HAL_I2C_Master_Transmit(&hi2c1, ENDERECO_MPU, &pData, 1, 100); //Posiciona o endereço
+	HAL_Delay(10);
+
+	HAL_I2C_Master_Receive(&hi2c1, ENDERECO_MPU, &bufferRx, 14, 100); //Busca todos os dados
+
+	mpu6050Data.accX = make16(bufferRx[0], bufferRx[1]);
+	mpu6050Data.accY = make16(bufferRx[2], bufferRx[3]);
+	mpu6050Data.accZ = make16(bufferRx[4], bufferRx[5]);
+	// dado 6 e 7 são a temperatura, ignorados
+	mpu6050Data.gyroX = make16(bufferRx[8], bufferRx[9]);
+	mpu6050Data.gyroY = make16(bufferRx[10], bufferRx[11]);
+	mpu6050Data.gyroZ = make16(bufferRx[12], bufferRx[13]);
+
+	mpu6050Data.accX *= 100; //desloca duas casas 1.53 = 153
+	mpu6050Data.accX /= ACC_DIVISAO_16G;
+	mpu6050Data.accY *= 100;
+	mpu6050Data.accY /= ACC_DIVISAO_16G;
+	mpu6050Data.accZ *= 100;
+	mpu6050Data.accZ /= ACC_DIVISAO_16G;
+
+	mpu6050Data.gyroX /= GYRO_DIVISAO_2000; //Dessa forma fica 10x menor
+	mpu6050Data.gyroY /= GYRO_DIVISAO_2000;
+	mpu6050Data.gyroZ /= GYRO_DIVISAO_2000;
 }
 /*==============================================================================
 FIM DO ARQUIVO

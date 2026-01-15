@@ -1,1 +1,2 @@
-../Core/Src/utilities/UtilityMPU6050.c:36:6:mpu6050Init	24	static
+../Core/Src/utilities/UtilityMPU6050.c:40:6:mpu6050Init	24	static
+../Core/Src/utilities/UtilityMPU6050.c:61:6:leituraMpu6050Init	32	static
